@@ -1,4 +1,11 @@
-<form method="post" enctype="multipart/form-data">
-   Song: <input type="file" name="upfile"><br>
-  <input type="submit">
-</form>
+<% form_tag '/', :multipart => true, :method => 'post' do %>
+  <%= flash_tag(:notice) %>
+  <% field_set_tag do %>
+    <%= file_field_tag 'music' %>
+    <%= file_field_tag 'image' %>
+  <% end %>
+
+  <% field_set_tag do %>
+    <%= submit_tag "Merge!" %>
+  <% end %>
+<% end %>

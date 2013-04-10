@@ -17,7 +17,6 @@ GEM
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    flvtool2 (1.0.6)
     http_router (0.11.0)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
@@ -67,7 +66,6 @@ GEM
       rack (>= 1.0)
     rake (10.0.4)
     rr (1.0.5)
-    rvideo (0.9.3)
     sass (3.2.7)
     shotgun (0.9)
       rack (>= 1.0)
@@ -96,14 +94,12 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   erubis (~> 2.7.0)
-  flvtool2
   minitest
   padrino
   pg
   rack-test
   rake
   rr
-  rvideo
   sass
   shotgun
   sinatra-flash
