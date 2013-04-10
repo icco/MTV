@@ -33,6 +33,6 @@
 # and then all delivered mail will use these settings unless otherwise specified.
 #
 
-Mtv::App.mailer :notifier do
+MTV::App.mailer :notifier do
   # Message definitions here...
 end

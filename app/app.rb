@@ -1,4 +1,4 @@
-module Mtv
+module MTV
   class App < Padrino::Application
     register SassInitializer
     use ActiveRecord::ConnectionAdapters::ConnectionManagement

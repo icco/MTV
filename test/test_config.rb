@@ -9,6 +9,6 @@ class MiniTest::Unit::TestCase
     ##
     # You can handle all padrino applications using instead:
     #   Padrino.application
-    Mtv::App.tap { |app|  }
+    MTV::App.tap { |app|  }
   end
 end
