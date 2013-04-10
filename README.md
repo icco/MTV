@@ -1,3 +1,3 @@
-# EDIT ME.
+# MTV
 
-I AM A GENERATED README.
+a simple web app for merging music and videos.
