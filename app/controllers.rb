@@ -13,7 +13,7 @@ MTV::App.controllers  do
     FileUtils.mv(params[:image][:tempfile].path, image)
     FileUtils.mv(params[:music][:tempfile].path, music)
 
-    cmd = "avconv -i \"#{image}\" -i \"#{music}\" \"#{dest}\""
+    cmd = "avconv -y -i \"#{image}\" -i \"#{music}\" \"#{dest}\""
     p cmd
     p Kernel.system cmd
 
