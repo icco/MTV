@@ -18,19 +18,23 @@
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2/swfobject.js"></script>
     <script type="text/javascript">
+      function onYouTubePlayerReady(playerId) {
+        ytplayer = document.getElementById("myytplayer");
+        ytplayer.setLoop(true);
+        for (i = 0; i < (Math.random()*20); i++) {
+          ytplayer.setShuffle(true);
+        }
+        ytplayer.playVideoAt(1);
+      }
+
       var params = { allowScriptAccess: "always" };
       var atts = { id: "myytplayer" };
 
-      swfobject.embedSWF(
-          "https://www.youtube.com/v/videoseries?listType=user_uploads&list=artisanfm&version=3&enablejsapi=1&playerapiid=ytplayer&controls=0",
-          "ytapiplayer", "853", "480", "8", null, null, params, atts);
+      //PL_uHjZH5ltDt3igK1l8RnWQGfKi-xekT8
 
-      function onYouTubePlayerReady(playerId) {
-        ytplayer = document.getElementById("myytplayer");
-        ytplayer.setShuffle(true);
-        ytplayer.setLoop(true);
-        ytplayer.playVideoAt(0);
-      }
+      swfobject.embedSWF(
+          "https://www.youtube.com/v/videoseries?listType=user_uploads&list=artisanfm&version=3&enablejsapi=1&playerapiid=ytplayer&&autoplay=0&modestbranding=1",
+          "ytapiplayer", "853", "480", "8", null, null, params, atts);
     </script>
   </body>
 </html>
