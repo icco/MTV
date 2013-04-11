@@ -14,9 +14,16 @@ MTV::App.controllers  do
     FileUtils.mv(params[:music][:tempfile].path, music)
 
     cmd = "avconv -i \"#{image}\" -i \"#{music}\" \"#{dest}\""
-    p cmd
-    p Kernel.system cmd
+    puts cmd
+    Kernel.system cmd
 
-    dest
+    serv = "tmp/#{Time.now.to_i}.flv"
+    FileUtils.mv(dest, serv)
+
+    haml '%a{:href => file}=file', :locals => { :file => serv }
+  end
+
+  get '/tmp/:file' do
+    send_file File.expand_path("tmp/#{params[:file]}", File.dirname(__FILE__))
   end
 end
