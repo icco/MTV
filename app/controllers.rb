@@ -1,5 +1,9 @@
 MTV::App.controllers  do
   get :index do
+    render :youtube
+  end
+
+  get :merge do
     render :index
   end
 
@@ -20,10 +24,11 @@ MTV::App.controllers  do
     serv = "tmp/#{Time.now.to_i}.flv"
     FileUtils.mv(dest, serv)
 
-    haml '%a{:href => file}=file', :locals => { :file => serv }
+    haml '%a{:href => file}="/#{file}"', :locals => { :file => serv }
   end
 
   get '/tmp/:file' do
-    send_file File.expand_path("tmp/#{params[:file]}", File.dirname(__FILE__))
+    path = Padrino.root("tmp", params[:file])
+    send_file path, :disposition => :attachment
   end
 end
