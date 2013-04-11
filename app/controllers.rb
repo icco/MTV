@@ -4,8 +4,17 @@ MTV::App.controllers  do
   end
 
   post :index do
+    require 'fileutils'
+    p params[:image]
+
     dest = Tempfile.new(['final', '.flv']).path
-    Kernel.system "avconv -i #{params[:image][:tempfile].path} -i #{params[:music][:tempfile].path} #{dest}"
+    image = Tempfile.new(['', params[:image][:filename]]).path
+    music = Tempfile.new(['', params[:music][:filename]]).path
+
+    FileUtils.mv(params[:image][:tempfile].path, image)
+    FileUtils.mv(params[:music][:tempfile].path, music)
+
+    Kernel.system "avconv -i #{image} -i #{music} #{dest}"
 
     dest
   end
