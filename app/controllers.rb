@@ -4,6 +4,6 @@ MTV::App.controllers  do
   end
 
   post :index do
-    "avconv -i #{params[:image][:tempfile]} -i #{params[:music][:tempfile]} final.flv"
+    "avconv -i #{params[:image][:tempfile].path} -i #{params[:music][:tempfile].path} #{Tempfile.new(['final', '.flv']).path}"
   end
 end
