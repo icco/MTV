@@ -8,8 +8,6 @@ MTV::App.controllers  do
   end
 
   post :index do
-    require 'fileutils'
-
     # Move music file
     music = Tempfile.new(['', params[:music][:filename]]).path
     FileUtils.mv(params[:music][:tempfile].path, music)
@@ -20,18 +18,11 @@ MTV::App.controllers  do
     img.scale!(1280, 720)
     img.write image
 
+    Job.create(music, image)
+
     # Combine image and music and write to a temp file.
     # More details: http://ffmpeg.org/trac/ffmpeg/wiki/EncodeforYouTube
     dest = Tempfile.new(['final', '.mkv']).path
-    cmd = "avconv -y -loop 1 -r 2 -i \"#{image}\" -i \"#{music}\" -crf 18 -c:a libvorbis -q:a 5 -shortest -pix_fmt yuv420p \"#{dest}\""
-    puts cmd
-    Kernel.system cmd
-
-    # Move final output to a tmp/ to serve
-    serv = "tmp/#{Time.now.to_i}.mkv"
-    FileUtils.mv(dest, serv)
-
-    haml '%a{:href => file}="/#{file}"', :locals => { :file => serv }
   end
 
   get '/tmp/:file' do

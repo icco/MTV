@@ -3,7 +3,6 @@ source "https://rubygems.org"
 # Project requirements
 gem 'activerecord', :require => "active_record"
 gem 'erubis', "~> 2.7.0"
-gem 'haml'
 gem 'minitest', :require => 'minitest/autorun', :group => 'test'
 gem 'padrino'
 gem 'pg'

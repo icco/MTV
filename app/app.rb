@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module MTV
   class App < Padrino::Application
     register SassInitializer
