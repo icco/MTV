@@ -1,9 +1,19 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (3.2.12)
+      activesupport (= 3.2.12)
+      builder (~> 3.0.0)
+    activerecord (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
+      arel (~> 3.0.2)
+      tzinfo (~> 0.3.29)
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    arel (3.0.2)
+    builder (3.0.4)
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
@@ -58,6 +68,7 @@ GEM
     padrino-mailer (0.11.1)
       mail (~> 2.5.3)
       padrino-core (= 0.11.1)
+    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-protection (1.5.0)
@@ -89,6 +100,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    tzinfo (0.3.37)
     url_mount (0.2.1)
       rack
 
@@ -96,10 +108,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord
   erubis (~> 2.7.0)
   haml
   minitest
   padrino
+  pg
   rack-test
   rake
   rmagick
