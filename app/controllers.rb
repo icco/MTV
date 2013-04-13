@@ -23,7 +23,8 @@ MTV::App.controllers  do
     # Combine image and music and write to a temp file.
     # More details: http://ffmpeg.org/trac/ffmpeg/wiki/EncodeforYouTube
     dest = Tempfile.new(['final', '.mkv']).path
-    cmd = "avconv -y -i \"#{image}\" -i \"#{music}\" -c:v libx264 -preset medium -tune stillimage -aspect 16:9 -crf 18 -c:a libvorbis -q:a 5 -pix_fmt yuv420p \"#{dest}\""
+    #cmd = "avconv -y -loop 1 -r 2 -i \"#{image}\" -i \"#{music}\" -c:v libx264 -preset medium -tune stillimage -aspect 16:9 -crf 18 -c:a libvorbis -q:a 5 -pix_fmt yuv420p \"#{dest}\""
+    cmd = "avconv -y -loop 1 -r 2 -i \"#{image}\" -i \"#{music}\" -aspect 16:9 -crf 18 -c:a libvorbis -q:a 5 -pix_fmt yuv420p \"#{dest}\""
     puts cmd
     Kernel.system cmd
 
