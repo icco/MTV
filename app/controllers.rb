@@ -17,8 +17,7 @@ MTV::App.controllers  do
     # Resize and move image
     image = Tempfile.new(['', params[:image][:filename]]).path
     img = Magick::Image::read(params[:image][:tempfile].path).first
-    # We could resize, but better to just let it be for me.
-    #img.resize_to_fill!(1280, 720)
+    img.scale!(1280, 720)
     img.write image
 
     # Combine image and music and write to a temp file.
