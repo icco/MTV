@@ -10,6 +10,7 @@ gem 'rmagick', :require => 'RMagick'
 gem 'rr', :group => 'test'
 gem 'sass'
 gem 'sinatra-flash', :require => 'sinatra/flash'
+gem 'soundcloud'
 gem 'thin'
 
 # Padrino Stable Gem
