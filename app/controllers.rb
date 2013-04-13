@@ -10,18 +10,18 @@ MTV::App.controllers  do
   post :index do
     require 'fileutils'
 
-    dest = Tempfile.new(['final', '.flv']).path
+    dest = Tempfile.new(['final', '.mkv']).path
     image = Tempfile.new(['', params[:image][:filename]]).path
     music = Tempfile.new(['', params[:music][:filename]]).path
 
     FileUtils.mv(params[:image][:tempfile].path, image)
     FileUtils.mv(params[:music][:tempfile].path, music)
 
-    cmd = "avconv -y -i \"#{image}\" -i \"#{music}\" \"#{dest}\""
+    cmd = "avconv -y -i \"#{image}\" -i \"#{music}\" -crf 18 -pix_fmt yuv420p \"#{dest}\""
     puts cmd
     Kernel.system cmd
 
-    serv = "tmp/#{Time.now.to_i}.flv"
+    serv = "tmp/#{Time.now.to_i}.mkv"
     FileUtils.mv(dest, serv)
 
     haml '%a{:href => file}="/#{file}"', :locals => { :file => serv }
