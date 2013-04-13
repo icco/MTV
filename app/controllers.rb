@@ -17,7 +17,8 @@ MTV::App.controllers  do
     FileUtils.mv(params[:image][:tempfile].path, image)
     FileUtils.mv(params[:music][:tempfile].path, music)
 
-    cmd = "avconv -y -i \"#{image}\" -i \"#{music}\" -crf 18 -pix_fmt yuv420p \"#{dest}\""
+    # More details: http://ffmpeg.org/trac/ffmpeg/wiki/EncodeforYouTube
+    cmd = "avconv -y -i \"#{image}\" -i \"#{music}\" -c:v libx264 -preset medium -tune stillimage -aspect 16:9 -crf 18 -c:a libvorbis -q:a 5 -pix_fmt yuv420p \"#{dest}\""
     puts cmd
     Kernel.system cmd
 
