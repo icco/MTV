@@ -19,10 +19,6 @@ MTV::App.controllers  do
     img.write image
 
     Job.create(music, image)
-
-    # Combine image and music and write to a temp file.
-    # More details: http://ffmpeg.org/trac/ffmpeg/wiki/EncodeforYouTube
-    dest = Tempfile.new(['final', '.mkv']).path
   end
 
   get '/tmp/:file' do
