@@ -26,6 +26,8 @@ MTV::App.controllers  do
   end
 
   get '/tmp/' do
+    headers "Refresh" => "20"
+
     path = Padrino.root("tmp", "video")
 
     if not Dir.exist? path
