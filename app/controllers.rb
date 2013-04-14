@@ -8,34 +8,38 @@ MTV::App.controllers  do
   end
 
   post :index do
-    require 'fileutils'
-
     # Move music file
-    music = Tempfile.new(['', params[:music][:filename]]).path
+    music = "/tmp/#{Time.new.to_f}_#{params[:music][:filename]}"
     FileUtils.mv(params[:music][:tempfile].path, music)
 
     # Resize and move image
-    image = Tempfile.new(['', params[:image][:filename]]).path
+    image = "/tmp/#{Time.new.to_f}_#{params[:image][:filename]}"
     img = Magick::Image::read(params[:image][:tempfile].path).first
     img.scale!(1280, 720)
     img.write image
 
-    # Combine image and music and write to a temp file.
-    # More details: http://ffmpeg.org/trac/ffmpeg/wiki/EncodeforYouTube
-    dest = Tempfile.new(['final', '.mkv']).path
-    cmd = "avconv -y -loop 1 -r 2 -i \"#{image}\" -i \"#{music}\" -crf 18 -c:a libvorbis -q:a 5 -shortest -pix_fmt yuv420p \"#{dest}\""
-    puts cmd
-    Kernel.system cmd
+    Job.schedule(music, image)
 
-    # Move final output to a tmp/ to serve
-    serv = "tmp/#{Time.now.to_i}.mkv"
-    FileUtils.mv(dest, serv)
+    redirect '/tmp/'
+  end
 
-    haml '%a{:href => file}="/#{file}"', :locals => { :file => serv }
+  get '/tmp/' do
+    path = Padrino.root("tmp", "video")
+
+    if not Dir.exist? path
+      FileUtils.mkdir_p path
+    end
+
+    ret = ""
+    Dir.entries(path).sort.each do |file|
+      ret += "<li><a href=\"/tmp/#{file}\">#{file}</a></li>"
+    end
+
+    ret
   end
 
   get '/tmp/:file' do
-    path = Padrino.root("tmp", params[:file])
+    path = Padrino.root("tmp", "video", params[:file])
     send_file path, :disposition => :attachment
   end
 end

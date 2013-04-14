@@ -1,17 +1,32 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (3.2.12)
+      activesupport (= 3.2.12)
+      builder (~> 3.0.0)
+    activerecord (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
+      arel (~> 3.0.2)
+      tzinfo (~> 0.3.29)
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    arel (3.0.2)
+    builder (3.0.4)
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    haml (4.0.2)
-      tilt
+    hashie (2.0.3)
+    httmultiparty (0.3.10)
+      httparty (>= 0.7.3)
+      multipart-post
     http_router (0.11.0)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.6.4)
     mail (2.5.3)
       i18n (>= 0.4.0)
@@ -20,6 +35,8 @@ GEM
     mime-types (1.22)
     minitest (4.7.1)
     multi_json (1.7.2)
+    multi_xml (0.5.3)
+    multipart-post (1.2.0)
     padrino (0.11.1)
       padrino-admin (= 0.11.1)
       padrino-cache (= 0.11.1)
@@ -49,6 +66,7 @@ GEM
     padrino-mailer (0.11.1)
       mail (~> 2.5.3)
       padrino-core (= 0.11.1)
+    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-protection (1.5.0)
@@ -67,6 +85,10 @@ GEM
       tilt (~> 1.3, >= 1.3.4)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
+    soundcloud (0.3.1)
+      hashie
+      httmultiparty (>= 0.3)
+      httparty (>= 0.7.3)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -76,6 +98,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    tzinfo (0.3.37)
     url_mount (0.2.1)
       rack
 
@@ -83,10 +106,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord
   erubis (~> 2.7.0)
-  haml
   minitest
   padrino
+  pg
   rack-test
   rake
   rmagick
@@ -94,4 +118,5 @@ DEPENDENCIES
   sass
   shotgun
   sinatra-flash
+  soundcloud
   thin
