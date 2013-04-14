@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>MTV</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-  </head>
-  <body>
-    <% form_tag '/', :multipart => true, :method => 'post', :class => 'form-horizontal' do %>
-      <%= flash_tag(:notice) %>
-      <% field_set_tag do %>
-        <div class="control-group">
-          <label for="music" class="control-label">Music!</label>
-          <div class="controls">
-            <%= file_field_tag 'music' %>
-          </div>
-        </div>
+<% form_tag '/', :multipart => true, :method => 'post', :class => 'form-horizontal' do %>
+  <%= flash_tag(:notice) %>
+  <% field_set_tag do %>
+    <div class="control-group">
+      <label for="music" class="control-label">Music!</label>
+      <div class="controls">
+        <%= file_field_tag 'music' %>
+      </div>
+    </div>
 
-        <div class="control-group">
-          <label for="image" class="control-label">Image!</label>
-          <div class="controls">
-            <%= file_field_tag 'image' %>
-          </div>
-        </div>
-      <% end %>
+    <div class="control-group">
+      <label for="image" class="control-label">Image!</label>
+      <div class="controls">
+        <%= file_field_tag 'image' %>
+      </div>
+    </div>
+  <% end %>
 
-      <% field_set_tag do %>
-        <%= submit_tag "Merge!", :class => 'btn' %>
-      <% end %>
-    <% end %>
-
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+  <% field_set_tag do %>
+    <%= submit_tag "Merge!", :class => 'btn' %>
+  <% end %>
+<% end %>

@@ -1,6 +1,8 @@
 MTV::App.controllers  do
+  layout :main
+
   get :index do
-    render :youtube
+    render :youtube, :layout => false
   end
 
   get :merge do
@@ -30,12 +32,8 @@ MTV::App.controllers  do
       FileUtils.mkdir_p path
     end
 
-    ret = ""
-    Dir.entries(path).sort.each do |file|
-      ret += "<li><a href=\"/tmp/#{file}\">#{file}</a></li>"
-    end
-
-    ret
+    @files = Dir.entries(path).sort.delete_if {|x| x.start_with? '.' }
+    render :tmp
   end
 
   get '/tmp/:file' do
