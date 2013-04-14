@@ -18,11 +18,28 @@ MTV::App.controllers  do
     img.scale!(1280, 720)
     img.write image
 
-    Job.create(music, image)
+    Job.schedule(music, image)
+
+    redirect '/tmp/'
+  end
+
+  get '/tmp/' do
+    path = Padrino.root("tmp", "video")
+
+    if not Dir.exist? path
+      FileUtils.mkdir_p path
+    end
+
+    ret = ""
+    Dir.entries(path).each do |file|
+      ret += "<li><a href=\"/tmp/#{file}\">#{file}</a></li>"
+    end
+
+    ret
   end
 
   get '/tmp/:file' do
-    path = Padrino.root("tmp", params[:file])
+    path = Padrino.root("tmp", "video", params[:file])
     send_file path, :disposition => :attachment
   end
 end
