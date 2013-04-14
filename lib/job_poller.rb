@@ -1,9 +1,6 @@
 class JobPoller
   def run
-    loop do
-      job = Job.where("local_url IS NULL").find(:first, :lock => true)
-      next unless job
-      job.run
-    end
+    job = Job.where("local_url IS NULL").find(:first, :lock => true)
+    job.run if job
   end
 end

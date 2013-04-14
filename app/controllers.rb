@@ -9,11 +9,11 @@ MTV::App.controllers  do
 
   post :index do
     # Move music file
-    music = Tempfile.new(['', params[:music][:filename]]).path
+    music = "/tmp/#{Time.new.to_f}_#{params[:music][:filename]}"
     FileUtils.mv(params[:music][:tempfile].path, music)
 
     # Resize and move image
-    image = Tempfile.new(['', params[:image][:filename]]).path
+    image = "/tmp/#{Time.new.to_f}_#{params[:image][:filename]}"
     img = Magick::Image::read(params[:image][:tempfile].path).first
     img.scale!(1280, 720)
     img.write image
@@ -31,7 +31,7 @@ MTV::App.controllers  do
     end
 
     ret = ""
-    Dir.entries(path).each do |file|
+    Dir.entries(path).sort.each do |file|
       ret += "<li><a href=\"/tmp/#{file}\">#{file}</a></li>"
     end
 
