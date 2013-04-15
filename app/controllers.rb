@@ -34,7 +34,7 @@ MTV::App.controllers  do
     end
 
     F = Struct.new(:name, :mtime, :url)
-    @files = Dir.entries(path).sort.delete_if {|x| x.start_with? '.' }.map do |f|
+    @files = Dir.entries(path).sort.reverse.delete_if {|x| x.start_with? '.' }.map do |f|
       file = F.new
       file.name = f
       file.url = "/tmp/#{f}"
