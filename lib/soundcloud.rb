@@ -2,7 +2,10 @@ class SC
   attr_accessor :client
 
   def initialize
-    @client = Soundcloud.new(:client_id => ENV['SOUNDCLOUD_ID'])
+    @client = Soundcloud.new(
+      :client_id => ENV['SOUNDCLOUD_ID'],
+      :client_secret  => ENV['SOUNDCLOUD_SECRET'],
+    )
   end
 
   # Takes a soundcloud url and saves it to disk.
