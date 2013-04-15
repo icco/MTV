@@ -40,7 +40,7 @@ MTV::App.controllers  do
       file.url = "/tmp/#{f}"
       file.mtime = File.mtime(File.join(path, f))
 
-      return file
+      file
     end
 
     render :tmp
