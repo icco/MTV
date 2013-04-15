@@ -5,6 +5,10 @@ class SC
     @client = Soundcloud.new(
       :client_id => ENV['SOUNDCLOUD_ID'],
       :client_secret  => ENV['SOUNDCLOUD_SECRET'],
+
+      # TODO(icco): Replace with OAuth
+      :username => ENV['SOUNDCLOUD_EMAIL'],
+      :password => ENV['SOUNDCLOUD_PASSWORD'],
     )
   end
 
