@@ -19,10 +19,14 @@ class Job < ActiveRecord::Base
     Kernel.system cmd
 
     # Move final output to a tmp/ to serve
-    serv = Padrino.root("tmp", "video", "#{Time.now.to_i}.mkv")
-    FileUtils.mv(dest, serv)
+    if File.size(dest)
+      serv = Padrino.root("tmp", "video", "#{Time.now.to_i}.mkv")
+      FileUtils.mv(dest, serv)
 
-    self.local_url = serv
-    return self.save
+      self.local_url = serv
+      return self.save
+    else
+      return nil
+    end
   end
 end
