@@ -2,9 +2,9 @@
   <%= flash_tag(:notice) %>
   <% field_set_tag do %>
     <div class="control-group">
-      <label for="music" class="control-label">Music!</label>
+      <label for="music" class="control-label">Soundcloud URL (music)</label>
       <div class="controls">
-        <%= file_field_tag 'music' %>
+        <%= text_field_tag 'music' %>
       </div>
     </div>
 

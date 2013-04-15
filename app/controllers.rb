@@ -10,9 +10,8 @@ MTV::App.controllers  do
   end
 
   post :index do
-    # Move music file
-    music = "/tmp/#{Time.new.to_f}_#{params[:music][:filename]}"
-    FileUtils.mv(params[:music][:tempfile].path, music)
+    # music file
+    music = params[:music]
 
     # Resize and move image
     image = "/tmp/#{Time.new.to_f}_#{params[:image][:filename]}"
