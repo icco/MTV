@@ -9,7 +9,7 @@ class Job < ActiveRecord::Base
   end
 
   def run
-    music_file = sc.get_track(self.music)
+    music_file = SC.get_track(self.music)
 
     # Combine image and music and write to a temp file.
     # More details: http://ffmpeg.org/trac/ffmpeg/wiki/EncodeforYouTube
