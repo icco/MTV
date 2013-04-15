@@ -2,6 +2,6 @@
 
 <ul>
   <% @files.each do |file| %>
-    <li><a href="/tmp/<%= file %>"><%= file %></a></li>
+    <li><a href="<%= file.url %>"><%= file.name %></a> (<%= file.mtime %>)</li>
   <% end %>
 </ul>
