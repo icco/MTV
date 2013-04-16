@@ -41,7 +41,7 @@ class SC
         saved_file << sc.client.get(track.download_url)
       end
 
-      logger.debug "File downloaded: #{dest.insepct}: #{File.size(dest)}"
+      logger.debug "File downloaded: #{dest.inspect}: #{File.size(dest)}"
 
       return dest
     else
