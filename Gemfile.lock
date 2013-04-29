@@ -17,7 +17,7 @@ GEM
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    hashie (2.0.3)
+    hashie (2.0.4)
     httmultiparty (0.3.10)
       httparty (>= 0.7.3)
       multipart-post
