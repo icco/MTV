@@ -1,10 +1,10 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 # Project requirements
-gem 'activerecord', :require => "active_record"
-gem 'erubis', "~> 2.7.0"
+gem 'activerecord', :require => 'active_record'
+gem 'erubis', '~> 2.7.0'
 gem 'minitest', :require => 'minitest/autorun', :group => 'test'
-gem 'padrino'
+gem 'padrino', '~> 0.11'
 gem 'pg'
 gem 'rack-test', :require => 'rack/test', :group => 'test'
 gem 'rake'
