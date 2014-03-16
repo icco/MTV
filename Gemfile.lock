@@ -35,7 +35,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     mimemagic (0.2.1)
-    minitest (5.3.0)
+    minitest (5.3.1)
     moneta (0.7.20)
     multi_json (1.9.0)
     multi_xml (0.5.5)
@@ -80,7 +80,7 @@ GEM
     rake (10.1.1)
     rmagick (2.13.2)
     rr (1.1.2)
-    sass (3.2.14)
+    sass (3.3.3)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.4.4)
@@ -101,7 +101,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.38)
+    tzinfo (0.3.39)
     url_mount (0.2.1)
       rack
 
